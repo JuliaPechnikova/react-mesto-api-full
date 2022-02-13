@@ -4,5 +4,6 @@
 Пожалуйста, прикрепите в это описание ссылку на сайт, размещенный на Яндекс.Облаке.
 
 api.juliape4nikova.nomoredomains.work
+
 juliape4nikova.nomoredomains.work
-51.250.28.81
+
