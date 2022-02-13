@@ -1,0 +1,21 @@
+.page-form__button {
+  margin-top: 216px;
+  margin-bottom: 15px;
+  display: block;
+  border-radius: 2px;
+  border: 0;
+  padding: 0;
+  background: rgba(255, 255, 255, 1);
+  color: black;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  min-height: 50px;
+  min-width: 358px;
+  text-align: center;
+}
+
+.page-form__button:hover {
+  background: rgba(255, 255, 255, 0.85);
+}

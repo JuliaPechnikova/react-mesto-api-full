@@ -1,0 +1,12 @@
+.page-form__caption {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  color: rgba(255, 255, 255, 1);
+  text-decoration: none;
+}
+
+.page-form__caption:hover {
+  color: rgba(255, 255, 255, 0.6);
+}

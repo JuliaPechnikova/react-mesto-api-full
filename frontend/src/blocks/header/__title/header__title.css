@@ -1,0 +1,12 @@
+.header__title {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 1);
+}
+
+.header__title:hover {
+  color: rgba(255, 255, 255, 0.6);
+}
