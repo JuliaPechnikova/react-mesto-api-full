@@ -73,12 +73,12 @@ class Api {
     .then(this._checkResponse)
   }
 
-  deleteCardLikes(likeID) {
-    return fetch(`${this._baseUrl}cards/${likeID}/likes`, {
+  deleteCardLikes(cardID) {
+    return fetch(`${this._baseUrl}cards/${cardID}/likes`, {
       method: 'DELETE',
       headers: this._setHeaders(),
       body: JSON.stringify({
-        _id: likeID
+        _id: cardID
       })
     })
     .then(this._checkResponse)

@@ -52,8 +52,9 @@ function App() {
 
   function handleCardLike(card) {
     // Проверяем, есть ли уже лайк на карточке
-    const isLiked = card.likes.some(i => i._id === currentUser._id);
-    
+    const isLiked = card.likes.some(i => i === currentUser._id);
+
+
     // Отправляем запрос в API и получаем обновлённые данные карточки
     if (isLiked === false) {
       api.putCardLikes(card._id, !isLiked)
@@ -73,7 +74,7 @@ function App() {
 
 
   function handleCardDelete(card) {
-    const isOwn = card.owner._id === currentUser._id;
+    const isOwn = card.owner === currentUser._id;
     
     if (isOwn === true) {
       api.deleteCard(card._id, isOwn)
@@ -157,7 +158,7 @@ function App() {
           // авторизуем пользователя
           setLoggedIn(true);
           navigate('/');
-          setEmail(res.data.email);
+          setEmail(res.email);
         }
       })
       .catch(err => {
