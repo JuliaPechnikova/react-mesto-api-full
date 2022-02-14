@@ -6,7 +6,7 @@ class Api {
   _setHeaders(){
     return {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${localStorage.getItem("jwt")}`
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
     }
   }
 
@@ -63,7 +63,7 @@ class Api {
   }
 
   putCardLikes(cardID) {
-    return fetch(`${this._baseUrl}cards/likes/${cardID}`, {
+    return fetch(`${this._baseUrl}cards/${cardID}/likes`, {
       method: 'PUT',
       headers: this._setHeaders(),
       body: JSON.stringify({
@@ -74,7 +74,7 @@ class Api {
   }
 
   deleteCardLikes(likeID) {
-    return fetch(`${this._baseUrl}cards/likes/${likeID}`, {
+    return fetch(`${this._baseUrl}cards/${likeID}/likes`, {
       method: 'DELETE',
       headers: this._setHeaders(),
       body: JSON.stringify({
@@ -108,7 +108,7 @@ class Api {
 }
 
 const api = new Api({
-  baseUrl: 'https://api.juliape4nikova.nomoredomains.work'
+  baseUrl: 'https://api.juliape4nikova.nomoredomains.work/'
 });
 
 export default api;
