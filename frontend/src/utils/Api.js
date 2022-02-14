@@ -1,8 +1,13 @@
-
 class Api {
   constructor(content) {
     this._baseUrl = content.baseUrl;
-    this._headers = content.headers;
+  }
+
+  _setHeaders(){
+    return {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${localStorage.getItem("jwt")}`
+    }
   }
 
   _checkResponse(res){
@@ -13,10 +18,10 @@ class Api {
     return Promise.reject(`Ошибка: ${res.status}`);
   }
 
-  getInitialCards() {
+  getInitialCards(){
     return fetch(`${this._baseUrl}cards`, {
       method: 'GET',
-      headers: this._headers
+      headers: this._setHeaders()
     })
     .then(this._checkResponse)
   }
@@ -24,7 +29,7 @@ class Api {
   setCard(cardLink, cardName){
     return fetch(`${this._baseUrl}cards`, {
       method: 'POST',
-      headers: this._headers,
+      headers: this._setHeaders(),
       body: JSON.stringify({
         link: cardLink,
         name: cardName
@@ -36,7 +41,7 @@ class Api {
   getUserInfo(){
     return fetch(`${this._baseUrl}users/me`, {
       method: 'GET',
-      headers: this._headers
+      headers: this._setHeaders()
     })
     .then(this._checkResponse)
   }
@@ -48,7 +53,7 @@ class Api {
   setUserProfile(profileName, profileDescription){
     return fetch(`${this._baseUrl}users/me`, {
       method: 'PATCH',
-      headers: this._headers,
+      headers: this._setHeaders(),
       body: JSON.stringify({
         name: profileName,
         about: profileDescription
@@ -60,7 +65,7 @@ class Api {
   putCardLikes(cardID) {
     return fetch(`${this._baseUrl}cards/likes/${cardID}`, {
       method: 'PUT',
-      headers: this._headers,
+      headers: this._setHeaders(),
       body: JSON.stringify({
         _id: cardID
       })
@@ -71,7 +76,7 @@ class Api {
   deleteCardLikes(likeID) {
     return fetch(`${this._baseUrl}cards/likes/${likeID}`, {
       method: 'DELETE',
-      headers: this._headers,
+      headers: this._setHeaders(),
       body: JSON.stringify({
         _id: likeID
       })
@@ -82,7 +87,7 @@ class Api {
   setUserAvatar(userPhoto) {
     return fetch(`${this._baseUrl}users/me/avatar`, {
       method: 'PATCH',
-      headers: this._headers,
+      headers: this._setHeaders(),
       body: JSON.stringify({
         avatar: userPhoto
       })
@@ -93,7 +98,7 @@ class Api {
   deleteCard(cardID) {
     return fetch(`${this._baseUrl}cards/${cardID}`, {
       method: 'DELETE',
-      headers: this._headers,
+      headers: this._setHeaders(),
       body: JSON.stringify({
         _id: cardID
       })
@@ -103,11 +108,7 @@ class Api {
 }
 
 const api = new Api({
-  baseUrl: 'https://api.juliape4nikova.nomoredomains.work',
-  headers: {
-    //'authorization': 'f941cb39-a05b-48d7-86db-8f1e836b871d',
-    'Content-Type': 'application/json'
-  }
+  baseUrl: 'https://api.juliape4nikova.nomoredomains.work'
 });
 
 export default api;
