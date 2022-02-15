@@ -36,14 +36,14 @@ function App() {
 
   //Читаем данные из запроса по API
   React.useEffect(() => {
- if (loggedIn===true) {
-    api.getAllInfo()
-    .then(([cards, profileData]) => {
-      setCurrentUser(profileData);
-      setCards(cards);
-    })
-    .catch(err => console.log(`Ошибка инициализации данных: ${err}`));
-}
+    if (loggedIn===true) {
+      api.getAllInfo()
+      .then(([cards, profileData]) => {
+        setCurrentUser(profileData);
+        setCards(cards);
+      })
+      .catch(err => console.log(`Ошибка инициализации данных: ${err}`));
+    }
   }, [loggedIn]);
 
   React.useEffect(() => {
