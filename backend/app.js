@@ -18,8 +18,6 @@ const limiter = rateLimit({
   max: 100, // можно совершить максимум 100 запросов с одного IP
 });
 
-app.use(limiter);
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
@@ -51,11 +49,12 @@ app.post('/signup', createUserValidation, createUser);
 app.use('/users', require('./routes/users'));
 app.use('/cards', require('./routes/cards'));
 
-app.use(errorLogger); // подключаем логгер ошибок
-
 app.use(auth, (req, res, next) => {
   next(new NotFoundError('Запрос не найден'));
 });
+
+app.use(errorLogger); // подключаем логгер ошибок
+app.use(limiter);
 
 app.use(errors());
 app.use(errorProcess);
